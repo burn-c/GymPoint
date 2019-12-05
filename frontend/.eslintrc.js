@@ -18,6 +18,7 @@ module.exports = {
     sourceType: "module"
   },
   plugins: ["react", "jsx-a11y", "import", "react-hooks", "prettier"],
+  "parser": "babel-eslint",
   rules: {
     "prettier/prettier": "error",
     "react/jsx-filename-extension": ["error", { extensions: [".js", ".jsx"] }],
@@ -33,7 +34,8 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "import/no-named-as-default": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "react/jsx-props-no-spreading": "off"
   },
   settings: {
     "import/resolver": {

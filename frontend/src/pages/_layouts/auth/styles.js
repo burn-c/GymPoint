@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 350px;
+  height: 380px;
   max-width: 320px;
   width: 100%;
   background: rgba(255, 255, 255, 0.7);
@@ -44,6 +44,12 @@ export const Content = styled.div`
     &::placeholder {
       color: rgba(0, 0, 0, 1);
     }
+  }
+
+  span {
+    color: #ff1b1b;
+    font-weight: bold;
+    font-size: 12px;
   }
   button {
     margin: 5px 0 0;

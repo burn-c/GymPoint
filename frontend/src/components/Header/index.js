@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Content, Menu } from './styles';
+import { Container, Content, Menu, User } from './styles';
 import logo from '~/assets/logo.png';
 
 export default function Header() {
@@ -18,6 +18,12 @@ export default function Header() {
             <Link to="/helporders">PEDIDOS DE AUXÍLIO</Link>
           </Menu>
         </aside>
+        <User>
+          <div>
+            <strong>Carlos Oliveira</strong>
+            <Link to="/">sair do sistema</Link>
+          </div>
+        </User>
       </Content>
     </Container>
   );

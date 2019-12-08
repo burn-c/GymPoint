@@ -10,7 +10,7 @@ export const Content = styled.div`
   max-width: 900px;
   margin: 0 auto;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 
   nav {
@@ -31,5 +31,31 @@ export const Menu = styled.div`
     font-weight: bold;
     color: #999;
     padding-right: 15px;
+  }
+`;
+
+export const User = styled.div`
+  display: flex;
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 1px solid #eee;
+
+  div {
+    text-align: right;
+    margin-right: 10px;
+
+    strong {
+      display: block;
+      color: #000;
+      font-weight: bold;
+    }
+
+    a {
+      display: block;
+      margin-top: 2px;
+      font-size: 12px;
+      color: #dc143c;
+      font-weight: bold;
+    }
   }
 `;

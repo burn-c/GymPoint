@@ -19,7 +19,7 @@ export default function Students() {
       <MenuTop>
         <h1>Gerenciando alunos</h1>
         <MenuTopFunc>
-          <button>CADASTRAR</button>
+          <button type="button">CADASTRAR</button>
           <input type="text" placeholder="  Buscar Alunos" />
         </MenuTopFunc>
       </MenuTop>

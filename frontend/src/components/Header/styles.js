@@ -50,12 +50,14 @@ export const User = styled.div`
       font-weight: bold;
     }
 
-    a {
+    button {
       display: block;
       margin-top: 2px;
       font-size: 12px;
       color: #dc143c;
       font-weight: bold;
+      background: none;
+      border: 0;
     }
   }
 `;

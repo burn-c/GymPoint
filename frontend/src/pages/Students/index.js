@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { MdAdd } from 'react-icons/md';
 import { Container, MenuTop, MenuTopFunc } from './styles';
 import api from '~/services/api';
 
@@ -19,13 +20,16 @@ export default function Students() {
       <MenuTop>
         <h1>Gerenciando alunos</h1>
         <MenuTopFunc>
-          <button type="button">CADASTRAR</button>
+          <button type="button">
+            <MdAdd size="25" />
+            CADASTRAR
+          </button>
           <input type="text" placeholder="  Buscar Alunos" />
         </MenuTopFunc>
       </MenuTop>
       <table>
         <thead>
-          <tr>
+          <tr className="trCabecalho">
             <th className="cabecalho">ID</th>
             <th className="cabecalho">Nome</th>
             <th className="cabecalho">E-mail</th>
@@ -40,7 +44,14 @@ export default function Students() {
               <td>{stud.name}</td>
               <td>{stud.email}</td>
               <td>{stud.idade}</td>
-              <td>editar apagar</td>
+              <td>
+                <button className="btnEditar" type="button">
+                  editar
+                </button>
+                <button className="btnApagar" type="button">
+                  apagar
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

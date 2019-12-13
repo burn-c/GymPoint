@@ -35,6 +35,10 @@ export default function StudentRegistration() {
             <MdArrowBack size="25" />
             VOLTAR
           </Link>
+          <button type="submit">
+            <MdCheck size="25" />
+            SALVAR
+          </button>
         </MenuTopFunc>
       </MenuTop>
       <Form schema={schema} onSubmit={handleSubmit}>
@@ -50,13 +54,9 @@ export default function StudentRegistration() {
           <h2>ALTURA</h2>
         </div>
         <div className="divDados">
-          <Input name="idade" type="text" placeholder="Idade" />
-          <Input name="peso" type="text" placeholder="Peso" />
-          <Input name="altura" type="text" placeholder="Altura" />
-          <button type="submit">
-            <MdCheck size="25" />
-            SALVAR
-          </button>
+          <Input name="idade" type="idade" placeholder="Idade" />
+          <Input name="peso" type="peso" placeholder="Peso" />
+          <Input name="altura" type="altura" placeholder="Altura" />
         </div>
       </Form>
     </Container>

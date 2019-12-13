@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MdAdd } from 'react-icons/md';
 import { Container, MenuTop, MenuTopFunc } from './styles';
 import api from '~/services/api';
@@ -20,10 +21,10 @@ export default function Students() {
       <MenuTop>
         <h1>Gerenciando alunos</h1>
         <MenuTopFunc>
-          <button type="button">
+          <Link to="/studentsregistration">
             <MdAdd size="25" />
             CADASTRAR
-          </button>
+          </Link>
           <input type="text" placeholder="  Buscar Alunos" />
         </MenuTopFunc>
       </MenuTop>

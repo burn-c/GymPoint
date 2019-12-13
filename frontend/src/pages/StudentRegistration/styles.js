@@ -16,32 +16,42 @@ export const Container = styled.div`
     margin-left: auto;
     font-size: 16px;
     border-radius: 10px;
-    padding: 30px 20px 30px 20px;
+    padding: 10px;
 
     td {
       padding-bottom: 10px;
       padding-top: 10px;
       margin-bottom: 5px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     }
 
     .cabecalho {
       text-align: left;
       font-size: 20px;
     }
+  }
 
-    .btnEditar {
-      background: none;
-      border: 0;
-      margin-right: 10px;
-      color: #0033cc;
-    }
+  .divInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .divDadosTitulo {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-content: initial;
+    max-width: 900px;
+  }
+  .divDados {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
 
-    .btnApagar {
-      background: none;
-      border: 0;
-      color: #c71585;
-    }
+  h2 {
+    font-size: 10px;
   }
 `;
 
@@ -55,17 +65,40 @@ export const MenuTop = styled.div`
     border: 0;
     padding: 2px;
     border-radius: 4px;
-    width: 140px;
+    width: 110px;
     height: 40px;
     background-color: #ff1493;
     color: #fff;
     font-weight: bold;
     font-size: 16px;
-    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     align-content: center;
+    margin-left: 10px;
     justify-content: center;
+  }
+
+  button {
+    border: 0;
+    padding: 2px;
+    border-radius: 4px;
+    width: 110px;
+    height: 40px;
+    background-color: #ff1493;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-left: 10px;
+    justify-content: center;
+  }
+
+  .btnVoltar {
+    background-color: #d3d3d3;
   }
 
   input {

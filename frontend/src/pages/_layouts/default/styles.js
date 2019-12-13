@@ -7,4 +7,5 @@ export const Wrapper = styled.div`
     rgba(233, 68, 112, 1) 0%,
     rgba(246, 83, 200, 1) 100%
   );
+  color: #fff;
 `;

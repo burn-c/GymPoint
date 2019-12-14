@@ -36,6 +36,7 @@ module.exports = {
     "import/no-named-as-default": "off",
     "react/jsx-props-no-spreading": "off",
     "import/no-unresolved": "off",
+    "jsx-a11y/label-has-associated-control": "off",
   },
   settings: {
     "import/resolver": {

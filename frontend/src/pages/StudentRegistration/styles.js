@@ -8,50 +8,54 @@ export const Container = styled.div`
   margin-left: auto;
   align-items: center;
 
-  table {
+  ul {
     background: rgba(255, 255, 255, 0.3);
-    width: 900px;
+    width: 700px;
     align-self: center;
     margin-right: auto;
     margin-left: auto;
-    font-size: 16px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
 
-    td {
-      padding-bottom: 10px;
-      padding-top: 10px;
-      margin-bottom: 5px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    }
-
-    .cabecalho {
-      text-align: left;
-      font-size: 20px;
+    li {
+      margin: 10px 0 10px 0;
     }
   }
 
-  .divInfo {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .divDadosTitulo {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    justify-content: space-between;
-    align-content: initial;
-    max-width: 900px;
-  }
   .divDados {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    justify-content: space-between;
   }
 
-  h2 {
-    font-size: 10px;
+  label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input {
+    background: rgba(255, 255, 255, 0.7);
+    border: 0;
+    border-radius: 4px;
+    height: 40px;
+    padding: 0 15px;
+    color: #000;
+    font-size: 16px;
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 1);
+    }
+  }
+  .inputName,
+  .inputEmail {
+    width: 100%;
+  }
+  span {
+    color: #f01f50;
+    font-weight: bold;
+    font-size: 12px;
   }
 `;
 
@@ -99,21 +103,6 @@ export const MenuTop = styled.div`
 
   .btnVoltar {
     background-color: #d3d3d3;
-  }
-
-  input {
-    background: rgba(255, 255, 255, 0.5);
-    border: 0;
-    border-radius: 4px;
-    height: 40px;
-    padding: 0 15px;
-    color: #000;
-    margin-left: 10px;
-    font-size: 16px;
-
-    &::placeholder {
-      color: rgba(0, 0, 0, 1);
-    }
   }
 `;
 

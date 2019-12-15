@@ -19,6 +19,16 @@ export const Container = styled.div`
 
     li {
       margin: 10px 0 10px 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* MENSAGEM DE ERRO DOS CAMPOS */
+    li span {
+      color: #cd3333;
+      font-weight: bold;
+      font-size: 12px;
+      margin: 10px 0 0 5px;
     }
   }
 
@@ -48,14 +58,10 @@ export const Container = styled.div`
       color: rgba(0, 0, 0, 1);
     }
   }
+
   .inputName,
   .inputEmail {
     width: 100%;
-  }
-  span {
-    color: #f01f50;
-    font-weight: bold;
-    font-size: 12px;
   }
 `;
 

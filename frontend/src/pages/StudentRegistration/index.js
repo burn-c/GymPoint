@@ -9,17 +9,21 @@ import { Container, MenuTop, MenuTopFunc } from './styles';
 import { studentCreateRequest } from '~/store/modules/student/actions';
 
 const schema = Yup.object().shape({
-  name: Yup.string().required('O nome é obrigatória!'),
+  name: Yup.string().required('O nome é obrigatório!'),
   email: Yup.string()
     .email('E-mail inválido! :( ')
     .required('O e-mail é obrigatório!'),
-  idade: Yup.number().required('A idade é obrigatória!'),
+  idade: Yup.number()
+    .required()
+    .typeError('A idade é obrigatória!'),
   peso: Yup.number()
     .round()
-    .required('O peso é obrigatória!'),
+    .required()
+    .typeError('O peso é obrigatóro!'),
   altura: Yup.number()
-    .truncate()
-    .required('A altura é obrigatória!'),
+    .round()
+    .required()
+    .typeError('A altura é obrigatória!'),
 });
 
 export default function StudentRegistration() {

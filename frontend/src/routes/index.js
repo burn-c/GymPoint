@@ -6,6 +6,7 @@ import SignIn from '../pages/SignIn';
 
 import Students from '../pages/Students';
 import Plans from '../pages/Plans';
+import PlanCreate from '../pages/PlanCreate';
 import HelpOrders from '../pages/HelpOrders';
 import Registrations from '../pages/Registrations';
 import StudentsRegistration from '../pages/StudentRegistration';
@@ -22,6 +23,7 @@ export default function Routes() {
         isPrivate
       />
       <Route path="/plans" component={Plans} isPrivate />
+      <Route path="/plancreate" component={PlanCreate} isPrivate />
       <Route path="/helporders" component={HelpOrders} isPrivate />
       <Route path="/registrations" component={Registrations} isPrivate />
     </Switch>

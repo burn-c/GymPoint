@@ -22,7 +22,7 @@ export default function Plans() {
       <MenuTop>
         <h1>Gerenciar planos</h1>
         <MenuTopFunc>
-          <Link className="btnCadastrar" to="/planregister">
+          <Link className="btnCadastrar" to="/plancreate">
             <MdAdd size="25" />
             CADASTRAR
           </Link>

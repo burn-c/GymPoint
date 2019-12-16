@@ -12,7 +12,7 @@ export default function PlanCreate() {
     <Container>
       <Form>
         <MenuTop>
-          <h1>Cadastrar plano</h1>
+          <h1>Cadastro de Plano</h1>
           <MenuTopFunc>
             <Link className="btnVoltar" to="/plans">
               <MdArrowBack size="25" />
@@ -24,27 +24,23 @@ export default function PlanCreate() {
             </button>
           </MenuTopFunc>
         </MenuTop>
-        <ul>
-          <li>
-            <label htmlFor="title">TÍTULO DO PLANO</label>
-            <Input name="title" />
-          </li>
-          <div className="divDados">
-            <li>
-              <label htmlFor="duration">DURAÇÃO (em meses)</label>
-              <Input name="duration" />
-            </li>
 
-            <li>
-              <label htmlFor="price">PREÇO MENSAL</label>
-              <Input name="price" />
-            </li>
-            <li>
-              <label htmlFor="totalprice">PREÇO TOTAL</label>
-              <Input name="totalprice" />
-            </li>
-          </div>
-        </ul>
+        <label>
+          TÍTULO DO PLANO
+          <Input name="plan" type="text" />
+        </label>
+        <label>
+          DURAÇÃO (em meses)
+          <Input />
+        </label>
+        <label>
+          PREÇO MENSAL
+          <Input />
+        </label>
+        <label>
+          PREÇO TOTAL
+          <Input />
+        </label>
       </Form>
     </Container>
   );

@@ -21,15 +21,11 @@ export default function Students() {
       <MenuTop>
         <h1>Gerenciando alunos</h1>
         <MenuTopFunc>
-          <Link className="btnCadastrar" to="/studentsregistration">
+          <Link to="/studentsregistration">
             <MdAdd size="25" />
             CADASTRAR
           </Link>
-          <input
-            className="btnSearch"
-            type="text"
-            placeholder="  Buscar Alunos"
-          />
+          <input type="text" placeholder="  Buscar Alunos" />
         </MenuTopFunc>
       </MenuTop>
       <table>

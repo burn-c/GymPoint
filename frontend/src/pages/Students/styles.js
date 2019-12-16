@@ -51,7 +51,7 @@ export const MenuTop = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
 
-  .btnCadastrar {
+  a {
     border: 0;
     padding: 2px;
     border-radius: 4px;
@@ -68,8 +68,8 @@ export const MenuTop = styled.div`
     justify-content: center;
   }
 
-  .btnSearch {
-    background: rgba(255, 255, 255, 0.4);
+  input {
+    background: rgba(255, 255, 255, 0.5);
     border: 0;
     border-radius: 4px;
     height: 40px;

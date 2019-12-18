@@ -2,6 +2,7 @@
 import produce from 'immer';
 
 const INITIAL_STATE = {
+  id: null,
   name: null,
   email: null,
   idade: null,
@@ -18,6 +19,10 @@ export default function student(state = INITIAL_STATE, action) {
         draft.idade = action.payload.idade;
         draft.peso = action.payload.peso;
         draft.altura = action.payload.altura;
+        break;
+      }
+      case '@student/DELETE_REQUEST': {
+        draft.id = action.payload.id;
         break;
       }
       default:

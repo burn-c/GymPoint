@@ -1,22 +1,10 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { MdAdd } from 'react-icons/md';
 import { Container, MenuTop, MenuTopFunc } from './styles';
 import api from '~/services/api';
 
-import { studentDeleteRequest } from '~/store/modules/student/actions';
-
-export default function Students() {
-  const dispatch = useDispatch();
-
-  const handleDelete = useCallback(
-    id => {
-      dispatch(studentDeleteRequest(id));
-    },
-    [dispatch]
-  );
-
+export default function StudentEdit() {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
@@ -33,9 +21,9 @@ export default function Students() {
       <MenuTop>
         <h1>Gerenciando alunos</h1>
         <MenuTopFunc>
-          <Link className="btnCadastrar" to="/studentsregistration">
+          <Link className="btnCadastrar" to="/students">
             <MdAdd size="25" />
-            CADASTRAR
+            SALVAR
           </Link>
           <input
             className="btnSearch"
@@ -65,11 +53,7 @@ export default function Students() {
                 <button className="btnEditar" type="button">
                   editar
                 </button>
-                <button
-                  className="btnApagar"
-                  type="button"
-                  onClick={handleDelete(stud.id)}
-                >
+                <button className="btnApagar" type="button">
                   apagar
                 </button>
               </td>

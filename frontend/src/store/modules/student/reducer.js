@@ -21,10 +21,7 @@ export default function student(state = INITIAL_STATE, action) {
         draft.altura = action.payload.altura;
         break;
       }
-      case '@student/DELETE_REQUEST': {
-        draft.id = action.payload.id;
-        break;
-      }
+
       default:
     }
   });

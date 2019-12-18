@@ -10,16 +10,3 @@ export function studentCreateFailure() {
     type: '@student/CREATE_REQUEST_FAILURE',
   };
 }
-
-export function studentDeleteRequest(id) {
-  return {
-    type: '@student/DELETE_REQUEST',
-    payload: { id },
-  };
-}
-
-export function studentDeleteFailure() {
-  return {
-    type: '@student/DELETE_REQUEST_FAILURE',
-  };
-}

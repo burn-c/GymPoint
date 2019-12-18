@@ -1,7 +1,7 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
-import { studentCreateFailure, studentDeleteFailure } from './actions';
+import { studentCreateFailure } from './actions';
 
 import history from '~/services/history';
 import api from '~/services/api';
@@ -26,20 +26,4 @@ export function* studentCreate({ payload }) {
   }
 }
 
-export function* studentDelete({ payload }) {
-  try {
-    const { id } = payload;
-
-    yield call(api.delete, `students/${id}`);
-    history.push('/students');
-    toast.success('Estudante deletado com sucesso!');
-  } catch (err) {
-    toast.error('Falha em deletar o estudante!');
-    yield put(studentDeleteFailure());
-  }
-}
-
-export default all([
-  takeLatest('@student/CREATE_REQUEST', studentCreate),
-  takeLatest('@student/DELETE_REQUEST', studentDelete),
-]);
+export default all([takeLatest('@student/CREATE_REQUEST', studentCreate)]);

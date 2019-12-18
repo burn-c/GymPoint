@@ -1,23 +1,23 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { MdAdd } from 'react-icons/md';
+import { toast } from 'react-toastify';
 import { Container, MenuTop, MenuTopFunc } from './styles';
 import api from '~/services/api';
 
-import { studentDeleteRequest } from '~/store/modules/student/actions';
-
 export default function Students() {
-  const dispatch = useDispatch();
-
-  const handleDelete = useCallback(
-    id => {
-      dispatch(studentDeleteRequest(id));
-    },
-    [dispatch]
-  );
-
   const [students, setStudents] = useState([]);
+  const [delStudents, setDelStudents] = useState([]);
+
+  async function handleDelete(id) {
+    try {
+      await api.delete(`students/${id}`);
+      setDelStudents([...delStudents]);
+      toast.success('Estudante deletado com sucesso!');
+    } catch (err) {
+      toast.error('Falha ao deletar o estudante!');
+    }
+  }
 
   useEffect(() => {
     async function loadStudents() {
@@ -26,7 +26,7 @@ export default function Students() {
       setStudents(data);
     }
     loadStudents();
-  }, []);
+  }, [delStudents]);
 
   return (
     <Container>
@@ -68,7 +68,7 @@ export default function Students() {
                 <button
                   className="btnApagar"
                   type="button"
-                  onClick={handleDelete(stud.id)}
+                  onClick={() => handleDelete(stud.id)}
                 >
                   apagar
                 </button>

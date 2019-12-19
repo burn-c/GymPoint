@@ -4,6 +4,7 @@ import { MdAdd } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { Container, MenuTop, MenuTopFunc } from './styles';
 import api from '~/services/api';
+import history from '~/services/history';
 
 export default function Students() {
   const [students, setStudents] = useState([]);
@@ -17,6 +18,10 @@ export default function Students() {
     } catch (err) {
       toast.error('Falha ao deletar o estudante!');
     }
+  }
+
+  async function handleEdit(id) {
+    history.push(`student/edit/${id}`);
   }
 
   useEffect(() => {
@@ -62,7 +67,11 @@ export default function Students() {
               <td>{stud.email}</td>
               <td>{stud.idade}</td>
               <td>
-                <button className="btnEditar" type="button">
+                <button
+                  className="btnEditar"
+                  type="button"
+                  onClick={() => handleEdit(stud.id)}
+                >
                   editar
                 </button>
                 <button

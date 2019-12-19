@@ -10,6 +10,7 @@ import PlanCreate from '../pages/PlanCreate';
 import HelpOrders from '../pages/HelpOrders';
 import Registrations from '../pages/Registrations';
 import StudentsRegistration from '../pages/StudentRegistration';
+import StudentsEdit from '../pages/StudentEdit';
 
 export default function Routes() {
   return (
@@ -22,6 +23,7 @@ export default function Routes() {
         component={StudentsRegistration}
         isPrivate
       />
+      <Route path="/student/edit/:id" component={StudentsEdit} isPrivate />
       <Route path="/plans" component={Plans} isPrivate />
       <Route path="/plancreate" component={PlanCreate} isPrivate />
       <Route path="/helporders" component={HelpOrders} isPrivate />

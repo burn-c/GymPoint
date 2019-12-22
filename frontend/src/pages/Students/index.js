@@ -10,6 +10,16 @@ export default function Students() {
   const [students, setStudents] = useState([]);
   const [delStudents, setDelStudents] = useState([]);
 
+  useEffect(() => {
+    async function loadStudents() {
+      const response = await api.get('students?q=');
+      const { data } = response;
+      setStudents(data);
+    }
+    loadStudents();
+  }, [delStudents]);
+
+  // DELETAR ESTUDANTE
   async function handleDelete(id) {
     try {
       await api.delete(`students/${id}`);
@@ -20,18 +30,10 @@ export default function Students() {
     }
   }
 
+  // EDITAR ESTUDANTE
   async function handleEdit(id) {
     history.push(`student/edit/${id}`);
   }
-
-  useEffect(() => {
-    async function loadStudents() {
-      const response = await api.get('students?q=');
-      const { data } = response;
-      setStudents(data);
-    }
-    loadStudents();
-  }, [delStudents]);
 
   return (
     <Container>

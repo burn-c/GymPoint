@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdAdd } from 'react-icons/md';
 
+import { toast } from 'react-toastify';
 import { Container, MenuTop, MenuTopFunc } from './styles';
 import api from '~/services/api';
 
 export default function Plans() {
   const [plans, setPlans] = useState([]);
+  const [plansDel, setPlansDel] = useState([]);
 
   useEffect(() => {
     async function loadPlans() {
@@ -15,7 +17,18 @@ export default function Plans() {
       setPlans(data);
     }
     loadPlans();
-  }, []);
+  }, [plansDel]);
+
+  // DELETAR PLANO
+  async function handleDelete(id) {
+    try {
+      await api.delete(`plans/${id}`);
+      setPlansDel([...plansDel]);
+      toast.success('Plano deletado com sucesso!');
+    } catch {
+      toast.error('Erro ao deletar plano!');
+    }
+  }
 
   return (
     <Container>
@@ -49,7 +62,11 @@ export default function Plans() {
                 <button className="btnEditar" type="button">
                   editar
                 </button>
-                <button className="btnApagar" type="button">
+                <button
+                  className="btnApagar"
+                  type="button"
+                  onClick={() => handleDelete(plan.id)}
+                >
                   apagar
                 </button>
               </td>

@@ -41,7 +41,9 @@ export default function Plans() {
           {plans.map(plan => (
             <tr key={plan.id}>
               <td>{plan.title}</td>
-              <td>{plan.duration}</td>
+              <td>
+                {plan.duration} {plan.duration > 1 ? 'meses' : 'mês'}
+              </td>
               <td>{plan.price}</td>
               <td>
                 <button className="btnEditar" type="button">

@@ -5,6 +5,7 @@ import { MdAdd } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { Container, MenuTop, MenuTopFunc } from './styles';
 import api from '~/services/api';
+import history from '~/services/history';
 
 export default function Plans() {
   const [plans, setPlans] = useState([]);
@@ -28,6 +29,11 @@ export default function Plans() {
     } catch {
       toast.error('Erro ao deletar plano!');
     }
+  }
+
+  // EDITAR PLANO
+  async function handleEdit(id) {
+    history.push(`/plan/${id}`);
   }
 
   return (
@@ -59,7 +65,11 @@ export default function Plans() {
               </td>
               <td>R$ {plan.price},00</td>
               <td>
-                <button className="btnEditar" type="button">
+                <button
+                  className="btnEditar"
+                  type="button"
+                  onClick={() => handleEdit(plan.id)}
+                >
                   editar
                 </button>
                 <button

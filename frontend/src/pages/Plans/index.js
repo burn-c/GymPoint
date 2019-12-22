@@ -57,7 +57,7 @@ export default function Plans() {
               <td>
                 {plan.duration} {plan.duration > 1 ? 'meses' : 'mês'}
               </td>
-              <td>{plan.price}</td>
+              <td>R$ {plan.price},00</td>
               <td>
                 <button className="btnEditar" type="button">
                   editar

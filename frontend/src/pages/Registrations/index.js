@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { MdAdd } from 'react-icons/md';
+import { MdAdd, MdCheckBox } from 'react-icons/md';
 import { toast } from 'react-toastify';
+import { parseISO, format } from 'date-fns';
+import pt from 'date-fns/locale/pt';
+import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
 import { Container, MenuTop, MenuTopFunc } from './styles';
 import api from '~/services/api';
 import history from '~/services/history';
@@ -19,6 +22,8 @@ export default function Registrations() {
     }
     loadRegistraions();
   }, []);
+
+  console.log(reg);
 
   // // DELETAR ESTUDANTE
   // async function handleDelete(id) {
@@ -69,8 +74,24 @@ export default function Registrations() {
             <tr key={re.id}>
               <td>{re.student_id}</td>
               <td>{re.plan_id}</td>
-              <td>{re.start_date}</td>
-              <td>{re.end_date}</td>
+              <td>
+                {format(
+                  zonedTimeToUtc(re.start_date, 'America/Sao_Paulo'),
+                  "d 'de' MMMM 'de' yyyy",
+                  {
+                    locale: pt,
+                  }
+                )}
+              </td>
+              <td>
+                {format(
+                  zonedTimeToUtc(re.end_date, 'America/Sao_Paulo'),
+                  "d 'de' MMMM 'de' yyyy",
+                  {
+                    locale: pt,
+                  }
+                )}
+              </td>
               <td>{re.active ? 'SIM' : 'NÃO'}</td>
 
               <td>

@@ -37,7 +37,7 @@ export const Container = styled.div`
       color: #0033cc;
     }
 
-    .btnApagar {
+    .btnCancelar {
       background: none;
       border: 0;
       color: #c71585;

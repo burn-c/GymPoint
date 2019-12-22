@@ -11,7 +11,7 @@ import history from '~/services/history';
 
 export default function Registrations() {
   const [reg, setReg] = useState([]);
-  // const [delStudents, setDelStudents] = useState([]);
+  const [cancel, setCancel] = useState([]);
   // const [searchStudent, setSearchStudent] = useState();
 
   useEffect(() => {
@@ -21,20 +21,21 @@ export default function Registrations() {
       setReg(data);
     }
     loadRegistraions();
-  }, []);
+  }, [cancel]);
 
   console.log(reg);
 
-  // // DELETAR ESTUDANTE
-  // async function handleDelete(id) {
-  //   try {
-  //     await api.delete(`students/${id}`);
-  //     setDelStudents([...delStudents]);
-  //     toast.success('Estudante deletado com sucesso!');
-  //   } catch (err) {
-  //     toast.error('Falha ao deletar o estudante!');
-  //   }
-  // }
+  // CANCELAR MATRÍCULA
+  async function handleCancel(id) {
+    try {
+      console.log(id);
+      await api.delete(`registrations/${id}`);
+      setCancel([...cancel]);
+      toast.success('Matrícula cancelada com sucesso!');
+    } catch (err) {
+      toast.error('Falha ao cancelar matrícula!');
+    }
+  }
 
   // // EDITAR ESTUDANTE
   // async function handleEdit(id) {
@@ -103,9 +104,9 @@ export default function Registrations() {
                   editar
                 </button>
                 <button
-                  className="btnApagar"
+                  className="btnCancelar"
                   type="button"
-                  // onClick={() => handleDelete(stud.id)}
+                  onClick={() => handleCancel(re.id)}
                 >
                   cancelar
                 </button>

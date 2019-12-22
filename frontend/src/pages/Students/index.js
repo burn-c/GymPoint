@@ -9,15 +9,16 @@ import history from '~/services/history';
 export default function Students() {
   const [students, setStudents] = useState([]);
   const [delStudents, setDelStudents] = useState([]);
+  const [searchStudent, setSearchStudent] = useState();
 
   useEffect(() => {
     async function loadStudents() {
-      const response = await api.get('students?q=');
+      const response = await api.get(`students?q=${searchStudent || ''}`);
       const { data } = response;
       setStudents(data);
     }
     loadStudents();
-  }, [delStudents]);
+  }, [delStudents, searchStudent]);
 
   // DELETAR ESTUDANTE
   async function handleDelete(id) {
@@ -47,6 +48,7 @@ export default function Students() {
           <input
             className="btnSearch"
             type="text"
+            onChange={e => setSearchStudent(e.target.value)}
             placeholder="  Buscar Alunos"
           />
         </MenuTopFunc>

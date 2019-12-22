@@ -41,7 +41,7 @@ export default function Students() {
       <MenuTop>
         <h1>Gerenciando alunos</h1>
         <MenuTopFunc>
-          <Link className="btnCadastrar" to="/studentsregistration">
+          <Link className="btnCadastrar" to="/studentscreate">
             <MdAdd size="25" />
             CADASTRAR
           </Link>

@@ -10,7 +10,7 @@ import PlanEdit from '../pages/PlanEdit';
 import PlanCreate from '../pages/PlanCreate';
 import HelpOrders from '../pages/HelpOrders';
 import Registrations from '../pages/Registrations';
-import StudentsRegistration from '../pages/StudentRegistration';
+import StudentsCreate from '../pages/StudentCreate';
 import StudentsEdit from '../pages/StudentEdit';
 
 export default function Routes() {
@@ -19,11 +19,7 @@ export default function Routes() {
       <Route path="/" exact component={SignIn} />
 
       <Route path="/students" component={Students} isPrivate />
-      <Route
-        path="/studentsregistration"
-        component={StudentsRegistration}
-        isPrivate
-      />
+      <Route path="/studentscreate" component={StudentsCreate} isPrivate />
       <Route path="/student/edit/:id" component={StudentsEdit} isPrivate />
       <Route path="/plans" component={Plans} isPrivate />
       <Route path="/plan/:id" component={PlanEdit} isPrivate />

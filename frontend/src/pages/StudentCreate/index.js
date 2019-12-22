@@ -26,7 +26,7 @@ const schema = Yup.object().shape({
     .typeError('A altura é obrigatória!'),
 });
 
-export default function StudentRegistration() {
+export default function StudentCreate() {
   const dispatch = useDispatch();
 
   function handleSubmit({ name, email, idade, peso, altura }) {

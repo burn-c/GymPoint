@@ -14,24 +14,29 @@ export const Container = styled.div`
     align-self: center;
     margin-right: auto;
     margin-left: auto;
-    font-size: 16px;
+    justify-content: center;
+    font-size: 14px;
     border-radius: 10px;
     padding: 30px 20px 30px 20px;
 
     td {
       padding-bottom: 10px;
       padding-top: 10px;
-      margin-bottom: 5px;
+      margin-bottom: 0 5px 5px 5px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.6);
     }
 
     .checkbox {
-      color: ${props => (props.active !== true ? '#999' : '#0e0')};
+      color: ${props => (props.active !== true ? '#eee' : '#0e0')};
     }
 
     .cabecalho {
       text-align: left;
-      font-size: 20px;
+      font-size: 18px;
+    }
+
+    .cabecalhoCenter {
+      justify-content: center;
     }
 
     .btnEditar {
@@ -80,7 +85,7 @@ export const MenuTop = styled.div`
     padding: 0 15px;
     color: #000;
     margin-left: 10px;
-    font-size: 16px;
+    font-size: 14px;
 
     &::placeholder {
       color: rgba(0, 0, 0, 1);

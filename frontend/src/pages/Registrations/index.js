@@ -79,27 +79,27 @@ export default function Registrations() {
       </MenuTop>
       <table>
         <thead>
-          <tr className="trCabecalho">
+          <tr>
             <th className="cabecalho">ALUNO</th>
-            <th className="cabecalho">PLANO</th>
-            <th className="cabecalho">INÍCIO</th>
-            <th className="cabecalho">TÉRMINO</th>
-            <th className="cabecalho">ATIVA</th>
-            <th className="cabecalho">AÇÕES</th>
+            <th className="cabecalhoCenter">PLANO</th>
+            <th className="cabecalhoCenter">INÍCIO</th>
+            <th className="cabecalhoCenter">TÉRMINO</th>
+            <th className="cabecalhoCenter">ATIVA</th>
+            <th className="cabecalhoCenter">AÇÕES</th>
           </tr>
         </thead>
         <tbody>
           {reg.map(re => (
-            <tr key={re.id}>
-              <td>{re.student_id}</td>
-              <td>{re.plan_id}</td>
-              <td>{re.startDateFormated}</td>
-              <td>{re.endDateFormated}</td>
-              <td>
+            <tr key={re.id} className="trCenter">
+              <td>{re.student.name}</td>
+              <td className="tdCenter">{re.plan.title}</td>
+              <td className="tdCenter">{re.startDateFormated}</td>
+              <td className="tdCenter">{re.endDateFormated}</td>
+              <td className="tdCenter">
                 <MdCheckBox className="checkbox" size="20" active={re.active} />
               </td>
 
-              <td>
+              <td className="tdCenter">
                 <button
                   className="btnEditar"
                   type="button"

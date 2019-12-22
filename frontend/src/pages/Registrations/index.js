@@ -95,8 +95,11 @@ export default function Registrations() {
               <td className="tdCenter">{re.plan.title}</td>
               <td className="tdCenter">{re.startDateFormated}</td>
               <td className="tdCenter">{re.endDateFormated}</td>
-              <td className="tdCenter">
-                <MdCheckBox className="checkbox" size="20" active={re.active} />
+              <td className="checkbox">
+                <MdCheckBox
+                  size="20"
+                  color={!re.active ? '#CD6889' : '#32CD32'}
+                />
               </td>
 
               <td className="tdCenter">

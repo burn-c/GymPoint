@@ -26,10 +26,6 @@ export const Container = styled.div`
       border-bottom: 1px solid rgba(255, 255, 255, 0.6);
     }
 
-    .checkbox {
-      color: ${props => (props.active !== true ? '#eee' : '#0e0')};
-    }
-
     .cabecalho {
       text-align: left;
       font-size: 18px;

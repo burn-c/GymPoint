@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import { MdArrowBack, MdCheck } from 'react-icons/md';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 import { Container, MenuTop, MenuTopFunc } from './styles';
 import api from '~/services/api';
-
-// EDITAR --------------------------------------------------------------------------------
-import { studentCreateRequest } from '~/store/modules/student/actions';
+import history from '~/services/history';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório!'),
@@ -30,21 +29,13 @@ const schema = Yup.object().shape({
 
 export default function StudentEdit() {
   const [student, setStudent] = useState([]);
-  // const dispatch = useDispatch();
-  // /**
-  //  * EDITAR ESTA FUNÇÃO--------------------------------------------------------------------
-  //  *
-  //  */
-  // function handleSubmit({ name, email, idade, peso, altura }) {
-  //   dispatch(studentCreateRequest(name, email, idade, peso, altura));
-  // }
 
   useEffect(() => {
     async function loadStudentEdit() {
       const id = window.location.href.slice(35);
-      console.log(id);
       const response = await api.get(`students/${id}/edit`);
       const { data } = response;
+
       setStudent(data);
     }
     loadStudentEdit();
@@ -54,9 +45,10 @@ export default function StudentEdit() {
     try {
       await api.put('students', name, email, peso, altura, idade);
 
-      console.log(name, email, peso, altura, idade);
+      history.push('/students');
+      toast.success('Estudante editado com sucesso! :)');
     } catch {
-      console.log('Erooo!');
+      toast.error('Erro ao tentar editar cadastro! :(');
     }
   }
 
@@ -84,6 +76,7 @@ export default function StudentEdit() {
               name="name"
               type="text"
               value={student.name}
+              onChange={e => setStudent(e.target.value)}
               placeholder="Digite seu nome"
             />
           </li>
@@ -105,6 +98,7 @@ export default function StudentEdit() {
                 name="idade"
                 type="number"
                 value={student.idade}
+                onChange={e => setStudent(e.target.value)}
                 placeholder="Idade"
               />
             </li>
@@ -115,6 +109,7 @@ export default function StudentEdit() {
                 name="peso"
                 type="number"
                 value={student.peso}
+                onChange={e => setStudent(e.target.value)}
                 placeholder="Peso"
                 step="0.01"
                 min="0"
@@ -127,6 +122,7 @@ export default function StudentEdit() {
                 name="altura"
                 type="number"
                 value={student.altura}
+                onChange={e => setStudent(e.target.value)}
                 placeholder="Altura"
                 step="0.01"
                 min="0"

@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdAdd, MdCheckBox } from 'react-icons/md';
 import { toast } from 'react-toastify';
-import { parseISO, format } from 'date-fns';
+import { format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
-import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
+import { zonedTimeToUtc } from 'date-fns-tz';
 import { Container, MenuTop, MenuTopFunc } from './styles';
 import api from '~/services/api';
 import history from '~/services/history';
@@ -12,7 +12,6 @@ import history from '~/services/history';
 export default function Registrations() {
   const [reg, setReg] = useState([]);
   const [cancel, setCancel] = useState([]);
-  // const [searchStudent, setSearchStudent] = useState();
 
   useEffect(() => {
     async function loadRegistraions() {
@@ -22,8 +21,6 @@ export default function Registrations() {
     }
     loadRegistraions();
   }, [cancel]);
-
-  console.log(reg);
 
   // CANCELAR MATRÍCULA
   async function handleCancel(id) {
@@ -37,10 +34,10 @@ export default function Registrations() {
     }
   }
 
-  // // EDITAR ESTUDANTE
-  // async function handleEdit(id) {
-  //   history.push(`student/edit/${id}`);
-  // }
+  // EDITAR ESTUDANTE
+  async function handleEdit(id) {
+    history.push(`registrations/${id}`);
+  }
 
   return (
     <Container>
@@ -93,13 +90,15 @@ export default function Registrations() {
                   }
                 )}
               </td>
-              <td>{re.active ? 'SIM' : 'NÃO'}</td>
+              <td>
+                <MdCheckBox className="checkbox" size="20" active={re.active} />
+              </td>
 
               <td>
                 <button
                   className="btnEditar"
                   type="button"
-                  // onClick={() => handleEdit(stud.id)}
+                  onClick={() => handleEdit(re.id)}
                 >
                   editar
                 </button>

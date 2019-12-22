@@ -17,9 +17,30 @@ export default function Registrations() {
     async function loadRegistraions() {
       const response = await api.get(`registrations`);
       const { data } = response;
-      setReg(data);
+
+      // FORMATA A DATA ADICIONANDO 2 CAMPOS NO OBJETO "startDateFormated" E "endDateFormated"
+      const dataAlterado = data.map(item => ({
+        ...item,
+        startDateFormated: format(
+          zonedTimeToUtc(item.start_date, 'America/Sao_Paulo'),
+          "d 'de' MMMM 'de' yyyy",
+          {
+            locale: pt,
+          }
+        ),
+        endDateFormated: format(
+          zonedTimeToUtc(item.end_date, 'America/Sao_Paulo'),
+          "d 'de' MMMM 'de' yyyy",
+          {
+            locale: pt,
+          }
+        ),
+      }));
+
+      setReg(dataAlterado);
     }
     loadRegistraions();
+    // SEMPRE QUE UM PLANO É CANCELADO A TABELA É ATUALIZADA
   }, [cancel]);
 
   // CANCELAR MATRÍCULA
@@ -72,24 +93,8 @@ export default function Registrations() {
             <tr key={re.id}>
               <td>{re.student_id}</td>
               <td>{re.plan_id}</td>
-              <td>
-                {format(
-                  zonedTimeToUtc(re.start_date, 'America/Sao_Paulo'),
-                  "d 'de' MMMM 'de' yyyy",
-                  {
-                    locale: pt,
-                  }
-                )}
-              </td>
-              <td>
-                {format(
-                  zonedTimeToUtc(re.end_date, 'America/Sao_Paulo'),
-                  "d 'de' MMMM 'de' yyyy",
-                  {
-                    locale: pt,
-                  }
-                )}
-              </td>
+              <td>{re.startDateFormated}</td>
+              <td>{re.endDateFormated}</td>
               <td>
                 <MdCheckBox className="checkbox" size="20" active={re.active} />
               </td>

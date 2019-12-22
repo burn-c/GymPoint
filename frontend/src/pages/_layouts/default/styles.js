@@ -8,4 +8,5 @@ export const Wrapper = styled.div`
     rgba(246, 83, 200, 1) 100%
   );
   color: #fff;
+  overflow: auto;
 `;

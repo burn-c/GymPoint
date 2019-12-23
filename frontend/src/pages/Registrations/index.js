@@ -46,7 +46,6 @@ export default function Registrations() {
   // CANCELAR MATRÍCULA
   async function handleCancel(id) {
     try {
-      console.log(id);
       await api.delete(`registrations/${id}`);
       setCancel([...cancel]);
       toast.success('Matrícula cancelada com sucesso!');
@@ -55,7 +54,7 @@ export default function Registrations() {
     }
   }
 
-  // EDITAR ESTUDANTE
+  // EDITAR MATRÍCULA
   async function handleEdit(id) {
     history.push(`registrations/${id}`);
   }
@@ -65,7 +64,7 @@ export default function Registrations() {
       <MenuTop>
         <h1>Gerenciando matrículas</h1>
         <MenuTopFunc>
-          <Link className="btnCadastrar" to="/studentscreate">
+          <Link className="btnCadastrar" to="/registrationcreate">
             <MdAdd size="25" />
             CADASTRAR
           </Link>

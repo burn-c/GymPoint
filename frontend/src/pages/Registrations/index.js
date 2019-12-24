@@ -68,12 +68,6 @@ export default function Registrations() {
             <MdAdd size="25" />
             CADASTRAR
           </Link>
-          <input
-            className="btnSearch"
-            type="text"
-            // onChange={e => setSearchStudent(e.target.value)}
-            placeholder="  Buscar Aluno"
-          />
         </MenuTopFunc>
       </MenuTop>
       <table>

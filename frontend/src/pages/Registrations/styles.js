@@ -72,21 +72,6 @@ export const MenuTop = styled.div`
     align-content: center;
     justify-content: center;
   }
-
-  .btnSearch {
-    background: rgba(255, 255, 255, 0.4);
-    border: 0;
-    border-radius: 4px;
-    height: 40px;
-    padding: 0 15px;
-    color: #000;
-    margin-left: 10px;
-    font-size: 14px;
-
-    &::placeholder {
-      color: rgba(0, 0, 0, 1);
-    }
-  }
 `;
 
 export const MenuTopFunc = styled.div`

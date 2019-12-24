@@ -36,6 +36,7 @@ export const Menu = styled.div`
 
 export const User = styled.div`
   display: flex;
+  margin-top: 10px;
   margin-left: 20px;
   padding-left: 20px;
   border-left: 1px solid #eee;
@@ -52,7 +53,6 @@ export const User = styled.div`
 
     button {
       display: block;
-      margin-top: 2px;
       font-size: 12px;
       color: #dc143c;
       font-weight: bold;

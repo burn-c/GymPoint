@@ -2,49 +2,58 @@ import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { MdArrowBack, MdCheck } from 'react-icons/md';
-import { Form, Input } from '@rocketseat/unform';
-import * as Yup from 'yup';
-import AsyncSelect from 'react-select/async';
+import { Form, Input, Select } from '@rocketseat/unform';
+import { toast } from 'react-toastify';
+import history from '~/services/history';
+
 import { Container, MenuTop, MenuTopFunc } from './styles';
 import api from '~/services/api';
 
-const schema = Yup.object().shape({
-  name: Yup.string().required('O nome é obrigatório!'),
-  email: Yup.string()
-    .email('E-mail inválido! :( ')
-    .required('O e-mail é obrigatório!'),
-  idade: Yup.number()
-    .required()
-    .typeError('A idade é obrigatória!'),
-  peso: Yup.number()
-    .round()
-    .required()
-    .typeError('O peso é obrigatóro!'),
-  altura: Yup.number()
-    .round()
-    .required()
-    .typeError('A altura é obrigatória!'),
-});
-
 export default function RegistrationCreate() {
-  const [student, setStudent] = useState([]);
-  function handleSubmit() {}
+  const [students, setStudents] = useState([]);
+  const [plans, setPlans] = useState([]);
+
+  // SALVAR MATRÍCULA
+  async function handleSubmit({ student_id, plan_id, start_date }) {
+    try {
+      await api.post('registrations', { student_id, plan_id, start_date });
+      toast.success('Matrícula cadastrada com sucesso! :)');
+      history.push('registrations');
+    } catch {
+      toast.error('Falha ao cadastrar matrícula! :(');
+    }
+  }
+
+  // BUSCA A LISTA DE ALUNOS
+  async function loadStudents() {
+    const response = await api.get('students/?q=');
+    const { data } = response;
+    const options = data.map(item => ({
+      id: item.id,
+      title: item.name,
+    }));
+    setStudents(options);
+  }
+
+  // BUSCA A LISTA DE PLANOS
+  async function loadPlans() {
+    const response = await api.get('plans');
+    const { data } = response;
+    const options = data.map(item => ({
+      id: item.id,
+      title: item.title,
+    }));
+    setPlans(options);
+  }
 
   useEffect(() => {
-    async function loadStudents() {
-      const response = await api.get('students/?q=');
-      const { data } = response;
-      const options = data.map(item => ({
-        inputValue: item.name,
-      }));
-      setStudent(options);
-    }
     loadStudents();
+    loadPlans();
   }, []);
 
   return (
     <Container>
-      <Form schema={schema} onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <MenuTop>
           <h1>Cadastro de matrícula</h1>
           <MenuTopFunc>
@@ -61,29 +70,27 @@ export default function RegistrationCreate() {
         <ul>
           <li>
             <label>ALUNO</label>
-            <AsyncSelect cacheOptions defaultOptions options={student} />
+            <Select
+              className="selectAluno"
+              name="student_id"
+              options={students}
+            />
           </li>
 
           <div className="divDados">
             <li>
               <label>PLANO</label>
-              <AsyncSelect cacheOptions defaultOptions />
+              <Select className="selectPlan" name="plan_id" options={plans} />
             </li>
 
             <li>
               <label>DATA DE INÍCIO</label>
-              <Input
-                name="startDate"
-                type="number"
-                placeholder="Escolha a data"
-                step="0.01"
-                min="0"
-              />
+              <Input name="start_date" type="date" />
             </li>
 
             <li>
               <label>DATA DE TÉRMINO</label>
-              <Input name="endDate" type="number" readOnly />
+              <Input name="endDate" type="date" readOnly />
             </li>
             <li>
               <label>VALOR FINAL</label>

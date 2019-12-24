@@ -8,6 +8,17 @@ export const Container = styled.div`
   margin-left: auto;
   align-items: center;
 
+  .selectAluno,
+  .selectPlan {
+    background: rgba(255, 255, 255, 0.7);
+    border: 0;
+    border-radius: 4px;
+    height: 40px;
+    padding: 0 15px;
+    color: #000;
+    font-size: 16px;
+  }
+
   ul {
     background: rgba(255, 255, 255, 0.3);
     width: 900px;
@@ -45,6 +56,10 @@ export const Container = styled.div`
     margin-bottom: 5px;
   }
 
+  select {
+    min-width: 170px;
+  }
+
   input {
     background: rgba(255, 255, 255, 0.7);
     border: 0;
@@ -53,6 +68,7 @@ export const Container = styled.div`
     padding: 0 15px;
     color: #000;
     font-size: 16px;
+    min-width: 170px;
 
     &::placeholder {
       color: rgba(0, 0, 0, 1);
@@ -77,6 +93,15 @@ export const MenuTop = styled.div`
     width: 110px;
     height: 40px;
     background-color: #ff1493;
+    background: rgba(255, 255, 255, 0.7);
+    border: 0;
+    border-radius: 4px;
+    height: 40px;
+    padding: 0 15px;
+    color: #000;
+    font-size: 16px;
+    min-width: 110px;
+
     color: #fff;
     font-weight: bold;
     font-size: 16px;

@@ -11,7 +11,6 @@ export const Container = styled.div`
   table {
     background: rgba(255, 255, 255, 0.3);
     max-width: 900px;
-    min-width: 300px;
 
     align-self: center;
     margin-right: auto;
@@ -42,7 +41,7 @@ export const Container = styled.div`
   }
 
   .divTeste {
-    display: none;
+    display: {props => ( ) };
   }
 `;
 

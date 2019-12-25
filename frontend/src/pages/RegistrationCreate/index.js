@@ -5,6 +5,7 @@ import { MdArrowBack, MdCheck } from 'react-icons/md';
 import { Form, Input, Select } from '@rocketseat/unform';
 import { toast } from 'react-toastify';
 import { addMonths, parseISO, format } from 'date-fns';
+import * as Yup from 'yup';
 import history from '~/services/history';
 
 import { Container, MenuTop, MenuTopFunc } from './styles';
@@ -17,6 +18,20 @@ export default function RegistrationCreate() {
   const [endDate, setEndDate] = useState();
   const [planData, setPlanData] = useState();
   const [priceTotal, setPriceTotal] = useState('0');
+
+  // VALIDAÇÃO DOS INPUTS
+  const schema = Yup.object().shape({
+    student_id: Yup.number()
+      .required()
+      .typeError('Selecione um aluno!'),
+    plan_id: Yup.number()
+      .required()
+      .typeError('Selecione um plano!'),
+    start_date: Yup.date()
+      .min(new Date(), 'Esta data já passou! :(')
+      .required()
+      .typeError('Selecione uma data!'),
+  });
 
   // BUSCA A LISTA DE ALUNOS
   async function loadStudents() {
@@ -67,7 +82,7 @@ export default function RegistrationCreate() {
     }
   }
 
-  // CALCULA DATA DE TÉRMINO ( PRIMEIRO VALIDA SE TEMOS O PLANO E DATA SELECIONADO )
+  // CALCULA DATA DE TÉRMINO E VALOR TOTAL ( PRIMEIRO VALIDA SE TEMOS O PLANO E DATA SELECIONADO )
   useEffect(() => {
     if (planData && startDate) {
       const date = addMonths(startDate, planData.duration);
@@ -94,7 +109,7 @@ export default function RegistrationCreate() {
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit}>
+      <Form schema={schema} onSubmit={handleSubmit}>
         <MenuTop>
           <h1>Cadastro de matrícula</h1>
           <MenuTopFunc>
@@ -134,7 +149,6 @@ export default function RegistrationCreate() {
               <Input
                 name="start_date"
                 type="date"
-                pattern="dd/MM/yyyy"
                 onChange={e => handleStartDate(e.target.value)}
               />
             </li>

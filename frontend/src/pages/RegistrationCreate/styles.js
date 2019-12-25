@@ -74,10 +74,6 @@ export const Container = styled.div`
       color: rgba(0, 0, 0, 1);
     }
   }
-
-  .inputAluno {
-    width: 100%;
-  }
 `;
 
 export const MenuTop = styled.div`

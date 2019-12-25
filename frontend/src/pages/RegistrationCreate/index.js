@@ -15,18 +15,8 @@ export default function RegistrationCreate() {
   const [plans, setPlans] = useState([]);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-  const [planDuration, setPlanDuration] = useState();
-
-  // SALVAR MATRÍCULAhttps://forum.imasters.com.br/topic/https://forum.imasters.com.br/topic/312939-propriedades-de-um-select/312939-propriedades-de-um-select/
-  async function handleSubmit({ student_id, plan_id, start_date }) {
-    try {
-      await api.post('registrations', { student_id, plan_id, start_date });
-      toast.success('Matrícula cadastrada com sucesso! :)');
-      history.push('registrations');
-    } catch {
-      toast.error('Falha ao cadastrar matrícula! :(');
-    }
-  }
+  const [planData, setPlanData] = useState();
+  const [priceTotal, setPriceTotal] = useState('0');
 
   // BUSCA A LISTA DE ALUNOS
   async function loadStudents() {
@@ -47,19 +37,21 @@ export default function RegistrationCreate() {
       id: item.id,
       title: item.title,
       duration: item.duration,
+      price: item.price,
     }));
     setPlans(options);
   }
 
+  // CARREGA OS DADOS DOS INPUTS
   useEffect(() => {
     loadStudents();
     loadPlans();
   }, []);
 
-  // SALVA A DURAÇÃO DO PLANO SELECIONADO PARA FUNÇÃO DE CALCULAR DATA TÉRMINO
+  // SALVA A DURAÇÃO E PREÇO DO PLANO SELECIONADO PARA FUNÇÃO DE CALCULAR DATA TÉRMINO E VALOR FINAL
   function handlePlanId(id) {
-    const month = plans.find(p => p.id === Number(id));
-    setPlanDuration(month.duration);
+    const plan = plans.find(p => p.id === Number(id));
+    setPlanData({ duration: plan.duration, price: plan.price });
   }
 
   // SALVA DATA INICIAL SELECIONADA
@@ -77,14 +69,28 @@ export default function RegistrationCreate() {
 
   // CALCULA DATA DE TÉRMINO ( PRIMEIRO VALIDA SE TEMOS O PLANO E DATA SELECIONADO )
   useEffect(() => {
-    if (planDuration && startDate) {
-      const date = addMonths(startDate, planDuration);
+    if (planData && startDate) {
+      const date = addMonths(startDate, planData.duration);
 
       const dateFormat = format(new Date(date), 'dd/MM/yyyy');
 
+      const priceCalc = String(planData.price * planData.duration);
+
+      setPriceTotal(priceCalc);
       setEndDate(dateFormat);
     }
-  }, [planDuration, startDate]);
+  }, [planData, startDate]);
+
+  // SALVAR MATRÍCULA
+  async function handleSubmit({ student_id, plan_id, start_date }) {
+    try {
+      await api.post('registrations', { student_id, plan_id, start_date });
+      toast.success('Matrícula cadastrada com sucesso! :)');
+      history.push('registrations');
+    } catch {
+      toast.error('Falha ao cadastrar matrícula, verique os dados! :(');
+    }
+  }
 
   return (
     <Container>
@@ -139,7 +145,12 @@ export default function RegistrationCreate() {
             </li>
             <li>
               <label>VALOR FINAL</label>
-              <Input name="total" type="number" readOnly />
+              <Input
+                name="total"
+                type="text"
+                value={`R$ ${priceTotal},00`}
+                readOnly
+              />
             </li>
           </div>
         </ul>

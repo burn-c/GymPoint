@@ -44,13 +44,19 @@ export default function Registrations() {
   }, [cancel]);
 
   // CANCELAR MATRÍCULA
-  async function handleCancel(id) {
-    try {
-      await api.delete(`registrations/${id}`);
-      setCancel([...cancel]);
-      toast.success('Matrícula cancelada com sucesso!');
-    } catch (err) {
-      toast.error('Falha ao cancelar matrícula!');
+  async function handleCancel(id, name, plan) {
+    // CONFIRMAÇÃO DO CANCELAR
+    const confirmar = window.confirm(
+      `Tem certeza que deseja cancelar a matrícula de ${name} do plano ${plan}?`
+    );
+    if (confirmar === true) {
+      try {
+        await api.delete(`registrations/${id}`);
+        setCancel([...cancel]);
+        toast.success('Matrícula cancelada com sucesso!');
+      } catch (err) {
+        toast.error('Falha ao cancelar matrícula!');
+      }
     }
   }
 
@@ -106,7 +112,9 @@ export default function Registrations() {
                 <button
                   className="btnCancelar"
                   type="button"
-                  onClick={() => handleCancel(re.id)}
+                  onClick={() =>
+                    handleCancel(re.id, re.student.name, re.plan.title)
+                  }
                 >
                   cancelar
                 </button>

@@ -21,13 +21,19 @@ export default function Plans() {
   }, [plansDel]);
 
   // DELETAR PLANO
-  async function handleDelete(id) {
-    try {
-      await api.delete(`plans/${id}`);
-      setPlansDel([...plansDel]);
-      toast.success('Plano deletado com sucesso!');
-    } catch {
-      toast.error('Erro ao deletar plano!');
+  async function handleDelete(id, plan) {
+    // CONFIRMAÇÃO DO CANCELAR
+    const confirmar = window.confirm(
+      `Tem certeza que deseja cancelar o plano ${plan}?`
+    );
+    if (confirmar === true) {
+      try {
+        await api.delete(`plans/${id}`);
+        setPlansDel([...plansDel]);
+        toast.success('Plano deletado com sucesso!');
+      } catch {
+        toast.error('Erro ao deletar plano!');
+      }
     }
   }
 
@@ -75,7 +81,7 @@ export default function Plans() {
                 <button
                   className="btnApagar"
                   type="button"
-                  onClick={() => handleDelete(plan.id)}
+                  onClick={() => handleDelete(plan.id, plan.title)}
                 >
                   apagar
                 </button>

@@ -26,7 +26,7 @@ export default function RegistrationCreate() {
       .typeError('Selecione um aluno!'),
     plan_id: Yup.number()
       .required()
-      .typeError('Selecione um plano!'),
+      .typeError('Selegit addcione um plano!'),
     start_date: Yup.date()
       .min(new Date(), 'Esta data já passou! :(')
       .required()

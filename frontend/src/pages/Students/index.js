@@ -21,13 +21,20 @@ export default function Students() {
   }, [delStudents, searchStudent]);
 
   // DELETAR ESTUDANTE
-  async function handleDelete(id) {
-    try {
-      await api.delete(`students/${id}`);
-      setDelStudents([...delStudents]);
-      toast.success('Estudante deletado com sucesso!');
-    } catch (err) {
-      toast.error('Falha ao deletar o estudante!');
+  async function handleDelete(id, name) {
+    // CONFIRMAÇÃO DO APAGAR
+    const confirmar = window.confirm(
+      `Tem certeza que deseja deletar o cadastro de ${name} ?`
+    );
+
+    if (confirmar === true) {
+      try {
+        await api.delete(`students/${id}`);
+        setDelStudents([...delStudents]);
+        toast.success('Estudante deletado com sucesso!');
+      } catch (err) {
+        toast.error('Falha ao deletar o estudante!');
+      }
     }
   }
 
@@ -81,7 +88,7 @@ export default function Students() {
                 <button
                   className="btnApagar"
                   type="button"
-                  onClick={() => handleDelete(stud.id)}
+                  onClick={() => handleDelete(stud.id, stud.name)}
                 >
                   apagar
                 </button>

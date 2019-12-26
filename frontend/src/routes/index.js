@@ -22,7 +22,7 @@ export default function Routes() {
       <Route path="/students" component={Students} isPrivate />
       <Route path="/studentscreate" component={StudentsCreate} isPrivate />
       <Route path="/student/edit/:id" component={StudentsEdit} isPrivate />
-      <Route path="/plans" component={Plans} isPrivate />
+      <Route path="/plans/:page?" component={Plans} isPrivate />
       <Route path="/plan/:id" component={PlanEdit} isPrivate />
       <Route path="/plancreate" component={PlanCreate} isPrivate />
       <Route path="/helporders" component={HelpOrders} isPrivate />

@@ -43,6 +43,30 @@ export const Container = styled.div`
       color: #c71585;
     }
   }
+
+  /*
+  * ESTILO DO MENU DE PAGINAÇÃO
+  */
+  .paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+
+  strong {
+    font-size: 30px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 5px 10px 5px 10px;
+    margin: 0 5px 0 5px;
+  }
+
+  .nextPage,
+  .backPage {
+    border-radius: 30px;
+    padding: 5px 10px 5px 10px;
+  }
 `;
 
 export const MenuTop = styled.div`

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MdAdd } from 'react-icons/md';
+import { MdAdd, MdArrowForward, MdArrowBack } from 'react-icons/md';
 
 import { toast } from 'react-toastify';
 import { Container, MenuTop, MenuTopFunc } from './styles';
@@ -10,15 +10,25 @@ import history from '~/services/history';
 export default function Plans() {
   const [plans, setPlans] = useState([]);
   const [plansDel, setPlansDel] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function loadPlans() {
-      const response = await api.get('plans');
+      const response = await api.get(`plans/?page=${page}`);
       const { data } = response;
+
       setPlans(data);
     }
     loadPlans();
-  }, [plansDel]);
+  }, [page, plansDel]);
+
+  // PAGINAÇÃO
+  function nextPage() {
+    setPage(page + 1);
+  }
+  function backPage() {
+    setPage(page - 1);
+  }
 
   // DELETAR PLANO
   async function handleDelete(id, plan) {
@@ -90,6 +100,25 @@ export default function Plans() {
           ))}
         </tbody>
       </table>
+      <div className="paginacao">
+        <button
+          type="button"
+          disabled={page === 1}
+          className="backPage"
+          onClick={backPage}
+        >
+          <MdArrowBack size={30} />
+        </button>
+        <strong>{page}</strong>
+        <button
+          type="button"
+          disabled={plans.length < 10}
+          className="nextPage"
+          onClick={nextPage}
+        >
+          <MdArrowForward size={30} />
+        </button>
+      </div>
     </Container>
   );
 }

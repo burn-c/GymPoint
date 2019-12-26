@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MdAdd } from 'react-icons/md';
+import { MdAdd, MdArrowBack, MdArrowForward } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { Container, MenuTop, MenuTopFunc } from './styles';
 import api from '~/services/api';
@@ -10,15 +10,26 @@ export default function Students() {
   const [students, setStudents] = useState([]);
   const [delStudents, setDelStudents] = useState([]);
   const [searchStudent, setSearchStudent] = useState();
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function loadStudents() {
-      const response = await api.get(`students?q=${searchStudent || ''}`);
+      const response = await api.get(
+        `students?q=${searchStudent || ''}/?page=${page}`
+      );
       const { data } = response;
       setStudents(data);
     }
     loadStudents();
-  }, [delStudents, searchStudent]);
+  }, [delStudents, page, searchStudent]);
+
+  // PAGINAÇÃO
+  function nextPage() {
+    setPage(page + 1);
+  }
+  function backPage() {
+    setPage(page - 1);
+  }
 
   // DELETAR ESTUDANTE
   async function handleDelete(id, name) {
@@ -97,6 +108,25 @@ export default function Students() {
           ))}
         </tbody>
       </table>
+      <div className="paginacao">
+        <button
+          type="button"
+          disabled={page === 1}
+          className="backPage"
+          onClick={backPage}
+        >
+          <MdArrowBack size={30} />
+        </button>
+        <strong>{page}</strong>
+        <button
+          type="button"
+          disabled={students.length < 10}
+          className="nextPage"
+          onClick={nextPage}
+        >
+          <MdArrowForward size={30} />
+        </button>
+      </div>
     </Container>
   );
 }

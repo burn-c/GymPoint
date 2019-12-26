@@ -46,7 +46,7 @@ export default function RegistrationCreate() {
 
   // BUSCA A LISTA DE PLANOS
   async function loadPlans() {
-    const response = await api.get('plans');
+    const response = await api.get('plans/?page=0');
     const { data } = response;
     const options = data.map(item => ({
       id: item.id,

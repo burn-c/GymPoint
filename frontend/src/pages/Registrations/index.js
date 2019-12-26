@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MdAdd, MdCheckBox } from 'react-icons/md';
+import { MdAdd, MdCheckBox, MdArrowBack, MdArrowForward } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
@@ -12,10 +12,11 @@ import history from '~/services/history';
 export default function Registrations() {
   const [reg, setReg] = useState([]);
   const [cancel, setCancel] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function loadRegistraions() {
-      const response = await api.get(`registrations`);
+      const response = await api.get(`registrations/?page=${page}`);
       const { data } = response;
 
       // FORMATA A DATA ADICIONANDO 2 CAMPOS NO OBJETO "startDateFormated" E "endDateFormated"
@@ -41,7 +42,15 @@ export default function Registrations() {
     }
     loadRegistraions();
     // SEMPRE QUE UM PLANO É CANCELADO A TABELA É ATUALIZADA
-  }, [cancel]);
+  }, [cancel, page]);
+
+  // PAGINAÇÃO
+  function nextPage() {
+    setPage(page + 1);
+  }
+  function backPage() {
+    setPage(page - 1);
+  }
 
   // CANCELAR MATRÍCULA
   async function handleCancel(id, name, plan) {
@@ -123,6 +132,25 @@ export default function Registrations() {
           ))}
         </tbody>
       </table>
+      <div className="paginacao">
+        <button
+          type="button"
+          disabled={page === 1}
+          className="backPage"
+          onClick={backPage}
+        >
+          <MdArrowBack size={30} />
+        </button>
+        <strong>{page}</strong>
+        <button
+          type="button"
+          disabled={reg.length < 10}
+          className="nextPage"
+          onClick={nextPage}
+        >
+          <MdArrowForward size={30} />
+        </button>
+      </div>
     </Container>
   );
 }

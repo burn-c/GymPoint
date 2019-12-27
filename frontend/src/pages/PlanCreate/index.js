@@ -24,8 +24,11 @@ const schema = Yup.object().shape({
 
 export default function PlanCreate() {
   const [planPrice, setPlanPrice] = useState();
+  const [planPriceMasc, setPlanPriceMasc] = useState('R$ 0.00');
   const [planDuration, setPlanDuration] = useState();
   const [planTotal, setPlanTotal] = useState();
+
+  // ADICIONA MÁSCARA AO PREÇO MENSAL
 
   // ATUALIZA O TOTAL DO PLANO
   useEffect(() => {
@@ -90,7 +93,7 @@ export default function PlanCreate() {
               <label htmlFor="price">PREÇO MENSAL</label>
               <Input
                 name="price"
-                type="number"
+                type="text"
                 onChange={e => setPlanPrice(e.target.value)}
                 placeholder="Digite o preço"
                 step="1.00"

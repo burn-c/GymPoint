@@ -67,7 +67,7 @@ export default function PlanEdit() {
     <Container>
       <Form schema={schema} onSubmit={handleSubmit}>
         <MenuTop>
-          <h1>Cadastrar plano</h1>
+          <h1>Editar plano</h1>
           <MenuTopFunc>
             <Link className="btnVoltar" to="/plans">
               <MdArrowBack size="25" />

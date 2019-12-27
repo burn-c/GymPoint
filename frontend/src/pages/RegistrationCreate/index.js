@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { MdArrowBack, MdCheck } from 'react-icons/md';
 import { Form, Input, Select } from '@rocketseat/unform';
 import { toast } from 'react-toastify';
-import { addMonths, parseISO, format } from 'date-fns';
+import { addMonths, subDays, parseISO, format } from 'date-fns';
 import * as Yup from 'yup';
 import history from '~/services/history';
 
@@ -18,6 +18,7 @@ export default function RegistrationCreate() {
   const [endDate, setEndDate] = useState();
   const [planData, setPlanData] = useState();
   const [priceTotal, setPriceTotal] = useState('0');
+  const dateLimit = subDays(new Date(), 1);
 
   // VALIDAÇÃO DOS INPUTS
   const schema = Yup.object().shape({
@@ -28,7 +29,8 @@ export default function RegistrationCreate() {
       .required()
       .typeError('Selegit addcione um plano!'),
     start_date: Yup.date()
-      .min(new Date(), 'Esta data já passou! :(')
+      // LIMITA A DATA INICIAL PARA O DIA ATUAL DO CADASTRO
+      .min(dateLimit, 'Esta data já passou! :(')
       .required()
       .typeError('Selecione uma data!'),
   });

@@ -41,8 +41,36 @@ export const Container = styled.div`
     }
   }
 
-  .divTeste {
-    display: none;
+  /*
+  * ESTILO DO MENU DE PAGINAÇÃO
+  */
+  .paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+
+  strong {
+    font-size: 30px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 5px 10px 5px 10px;
+    margin: 0 5px 0 5px;
+  }
+
+  .nextPage,
+  .backPage {
+    border-radius: 30px;
+    padding: 5px 10px 5px 10px;
+  }
+
+  .divMsg strong {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-top: 50px;
   }
 `;
 

@@ -15,7 +15,7 @@ export default function Students() {
   useEffect(() => {
     async function loadStudents() {
       const response = await api.get(
-        `students?q=${searchStudent || ''}/?page=${page}`
+        `students?q=${searchStudent || ''}&page=${page}`
       );
       const { data } = response;
       setStudents(data);

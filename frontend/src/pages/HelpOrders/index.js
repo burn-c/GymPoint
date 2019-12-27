@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import ReactModal from 'react-modal';
+import { MdArrowBack, MdArrowForward } from 'react-icons/md';
 import { Container, MenuTop } from './styles';
 import api from '~/services/api';
-
 import './styles.css';
 
 export default function HelpOrders() {
@@ -12,15 +12,24 @@ export default function HelpOrders() {
   const [question, setQuestion] = useState();
   const [answer, setAnswer] = useState();
   const [idQuestion, setIdQuestion] = useState();
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function loadHelpOrdes() {
-      const response = await api.get(`help_orders/list`);
+      const response = await api.get(`help_orders/list/?page=${page}`);
       const { data } = response;
       setHelpOrders(data);
     }
     loadHelpOrdes();
-  }, [modalIsOpen]);
+  }, [modalIsOpen, page]);
+
+  // PAGINAÇÃO
+  function nextPage() {
+    setPage(page + 1);
+  }
+  function backPage() {
+    setPage(page - 1);
+  }
 
   // MODAL
   function openModal(id, quest) {
@@ -38,8 +47,9 @@ export default function HelpOrders() {
     try {
       await api.put(`help_orders/${idQuestion}/answer`, { answer });
 
-      toast.success('Resposta enviada com sucesso! :)');
       closeModal();
+      setPage(1);
+      toast.success('Resposta enviada com sucesso! :)');
     } catch {
       toast.error('Erro ao enviar resposta! :(');
     }
@@ -50,7 +60,7 @@ export default function HelpOrders() {
       <MenuTop>
         <h1>Pedidos de auxílio</h1>
       </MenuTop>
-      <table>
+      <table hidden={helpOrders.length === 0}>
         <thead>
           <tr className="trCabecalho">
             <th className="cabecalho">ALUNO</th>
@@ -97,6 +107,28 @@ export default function HelpOrders() {
             </button>
           </form>
         </ReactModal>
+        <div className="paginacao">
+          <button
+            type="button"
+            disabled={page === 1}
+            className="backPage"
+            onClick={backPage}
+          >
+            <MdArrowBack size={30} />
+          </button>
+          <strong>{page}</strong>
+          <button
+            type="button"
+            disabled={helpOrders.length < 10}
+            className="nextPage"
+            onClick={nextPage}
+          >
+            <MdArrowForward size={30} />
+          </button>
+        </div>
+      </div>
+      <div className="divMsg" hidden={helpOrders.length !== 0}>
+        <strong>Você já respondeu todas as perguntas! :)</strong>
       </div>
     </Container>
   );

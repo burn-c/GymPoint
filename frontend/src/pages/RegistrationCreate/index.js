@@ -35,7 +35,7 @@ export default function RegistrationCreate() {
 
   // BUSCA A LISTA DE ALUNOS
   async function loadStudents() {
-    const response = await api.get('students/?q=');
+    const response = await api.get('students/?q&page=0');
     const { data } = response;
     const options = data.map(item => ({
       id: item.id,

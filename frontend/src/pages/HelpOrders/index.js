@@ -128,7 +128,7 @@ export default function HelpOrders() {
         </div>
       </div>
       <div className="divMsg" hidden={helpOrders.length !== 0}>
-        <strong>Você já respondeu todas as perguntas! :)</strong>
+        <strong>Você já respondeu todas as perguntas desta página! :)</strong>
       </div>
     </Container>
   );

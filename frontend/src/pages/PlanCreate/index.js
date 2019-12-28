@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import { Link } from 'react-router-dom';
-
+// import MaskedInput from 'react-text-mask';
+// import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import * as Yup from 'yup';
 import { MdArrowBack, MdCheck } from 'react-icons/md';
 import { toast } from 'react-toastify';
@@ -24,20 +25,34 @@ const schema = Yup.object().shape({
 
 export default function PlanCreate() {
   const [planPrice, setPlanPrice] = useState();
-  const [planPriceMasc, setPlanPriceMasc] = useState('R$ 0.00');
+  //  const [planPriceMasc, setPlanPriceMasc] = useState('R$ 0.00');
   const [planDuration, setPlanDuration] = useState();
   const [planTotal, setPlanTotal] = useState();
-
-  // ADICIONA MÁSCARA AO PREÇO MENSAL
 
   // ATUALIZA O TOTAL DO PLANO
   useEffect(() => {
     function calculate() {
+      // CONVERTE EM NÚMERO
+      // if (planPrice) {
+      //   const priceNumber = planPrice
+      //     .slice(2)
+      //     .replace(/.00/g, '')
+      //     .replace(/,/, '');
+      // setPlanPrice(priceNumber);
+
       setPlanTotal(planDuration * planPrice);
+
+      // console.log(planTotal);
     }
 
     calculate();
-  }, [planDuration, planPrice, planTotal]);
+  }, [planDuration, planPrice]);
+
+  // ADICIONA MÁSCARA AO PREÇO MENSAL
+  // const numberMask = createNumberMask({
+  //   prefix: 'R$ ',
+  //   suffix: '.00',
+  // });
 
   // REQUISIÇÃO DE CADASTRO DO PLANO
   async function handleSubmit(title, duration, price) {
@@ -84,7 +99,7 @@ export default function PlanCreate() {
                 type="number"
                 onChange={e => setPlanDuration(e.target.value)}
                 placeholder="Digite qtd. meses"
-                max="12"
+                max="360"
                 min="0"
               />
             </li>
@@ -105,7 +120,7 @@ export default function PlanCreate() {
               <Input
                 name="totalprice"
                 readOnly
-                value={`R$ ${!planTotal ? '0,00' : `${planTotal},00`}`}
+                value={`R$ ${!planTotal ? '0.00' : `${planTotal}.00`}`}
               />
             </li>
           </div>

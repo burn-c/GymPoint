@@ -7,21 +7,21 @@ import api from '~/services/api';
 
 export function* signIn({ payload }) {
   try {
-    const { email, password } = payload;
+    const { id } = payload;
 
-    const response = yield call(api.post, 'sessions', {
-      email,
-      password,
-    });
+    // const response = yield call(api.post, 'sessions', {
+    //   email,
+    //   password,
+    // });
 
-    const { token, user } = response.data;
+    // const { token, user } = response.data;
 
-    if (user.provider) {
-      Alert.alert('Erro no login', 'Acesso apenas para estudantes!');
-    }
+    // if (user.provider) {
+    //   Alert.alert('Erro no login', 'Acesso apenas para estudantes!');
+    // }
 
-    api.defaults.headers.Authorization = `Bearer ${token}`;
-    yield put(signInSuccess(token, user));
+    // api.defaults.headers.Authorization = `Bearer ${token}`;
+    yield put(signInSuccess(id));
 
     //  history.push('/students');
   } catch (err) {

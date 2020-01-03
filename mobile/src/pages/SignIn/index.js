@@ -7,6 +7,7 @@ import logo from '~/assets/logoWhite.png';
 import { Container, Form, FormInput, SubmitButton } from './styles';
 
 export default function SignIn() {
+  function handleSubmit() {}
   return (
     <Background>
       <Container>
@@ -16,10 +17,12 @@ export default function SignIn() {
             icon="perm-identity"
             keyboardType="number-pad"
             autoCorrect={false}
+            returnKeyType="send"
+            onSubmitediting={handleSubmit}
             placeholder="Informe seu ID de cadastro"
           />
 
-          <SubmitButton onPress={() => {}}>Entrar no sistema</SubmitButton>
+          <SubmitButton onPress={handleSubmit}>Entrar no sistema</SubmitButton>
         </Form>
       </Container>
     </Background>

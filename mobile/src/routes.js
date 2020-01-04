@@ -18,6 +18,7 @@ export default (isSigned = false) =>
             HelpOrders,
           },
           {
+            resetOnBlur: true,
             tabBarOptions: {
               keyboardHidesTabBar: true,
               activeTintColor: '#FFF',

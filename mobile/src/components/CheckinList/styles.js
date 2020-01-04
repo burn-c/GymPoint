@@ -16,7 +16,7 @@ export const CheckInCount = styled.Text`
   font-weight: bold;
   font-size: 14px;
 `;
-export const Date = styled.Text`
+export const DateTime = styled.Text`
   font-size: 14px;
   color: #999;
 `;

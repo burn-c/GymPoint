@@ -1,12 +1,20 @@
-import React from 'react';
-import { Container, CheckInCount, Date } from './styles';
+import React, { useMemo } from 'react';
+import { parseISO, formatRelative } from 'date-fns';
+import pt from 'date-fns/locale/pt';
+import { Container, CheckInCount, DateTime } from './styles';
 
-export default function CheckinList() {
+export default function CheckinList({ data }) {
+  const dateParsed = useMemo(() => {
+    return formatRelative(parseISO(data.createdAt), new Date(), {
+      locale: pt,
+    });
+  }, [data.createdAt]);
+
   return (
     <Container>
-      <CheckInCount>Check-in #7</CheckInCount>
+      <CheckInCount>Check-in #{data.count}</CheckInCount>
 
-      <Date>Hoje às 14hrs</Date>
+      <DateTime>{dateParsed}</DateTime>
     </Container>
   );
 }

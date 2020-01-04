@@ -1,8 +1,12 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { useSelector } from 'react-redux';
 
-// import { Container } from './styles';
+import createRouter from './routes';
 
 export default function App() {
-  return <Text>TExte</Text>;
+  const signed = useSelector(state => state.auth.signed);
+
+  const Routes = createRouter(signed);
+
+  return <Routes />;
 }

@@ -19,3 +19,14 @@ export const Logo = styled.Image`
   width: 100px;
   height: 20px;
 `;
+
+export const LogOutButton = styled.View`
+  position: absolute;
+  right: 10px;
+`;
+
+export const LogOutButtonText = styled.Text`
+  font-size: 13px;
+  font-weight: bold;
+  color: #740001;
+`;

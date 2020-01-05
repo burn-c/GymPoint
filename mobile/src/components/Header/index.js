@@ -1,12 +1,26 @@
 import React from 'react';
-
+import { useDispatch } from 'react-redux';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import logo from '~/assets/logoWhiteHeader.png';
 
-import { Container, GoBackButton, Logo } from './styles';
+import { signOut } from '~/store/modules/auth/actions';
+
+import {
+  Container,
+  GoBackButton,
+  Logo,
+  LogOutButton,
+  LogOutButtonText,
+} from './styles';
 
 export default function Header({ navigation, goBack }) {
+  const dispatch = useDispatch();
+
+  function handleLogOut() {
+    dispatch(signOut());
+  }
+
   return (
     <Container>
       <GoBackButton>
@@ -21,6 +35,11 @@ export default function Header({ navigation, goBack }) {
         )}
       </GoBackButton>
       <Logo source={logo} />
+      <LogOutButton>
+        <TouchableOpacity onPress={handleLogOut}>
+          <LogOutButtonText>LogOut</LogOutButtonText>
+        </TouchableOpacity>
+      </LogOutButton>
     </Container>
   );
 }

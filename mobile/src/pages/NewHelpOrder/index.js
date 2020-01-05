@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Alert } from 'react-native';
 import api from '~/services/api';
 import Background from '~/components/Background';
+import Header from '~/components/Header';
 import { Container, Form, TextBox, NewHelpOrderButton } from './styles';
 
 export default function NewHelpOrder({ navigation }) {
@@ -21,11 +22,12 @@ export default function NewHelpOrder({ navigation }) {
 
   return (
     <Background>
+      <Header goBack navigation={navigation} />
       <Container>
         <Form>
           <TextBox
             multiline
-            numberOfLines={10}
+            numberOfLines={8}
             textAlignVertical="top"
             placeholder="Digite sua pergunta aqui..."
             onSubmitediting={handleSubmit}

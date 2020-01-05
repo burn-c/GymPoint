@@ -8,14 +8,19 @@ import { Container, Form, TextBox, NewHelpOrderButton } from './styles';
 
 export default function NewHelpOrder({ navigation }) {
   const [question, setQuestion] = useState('');
+  const [loading, setLoading] = useState(false);
   const id = useSelector(state => state.auth.id);
 
   async function handleSubmit() {
     try {
+      setLoading(true);
       await api.post(`students/${id}/help_orders`, { question });
       navigation.navigate('HelpOrders');
+      setLoading(false);
       Alert.alert('Enviado!', 'Pedido enviado com sucesso!');
     } catch (error) {
+      setLoading(false);
+
       Alert.alert('Erro!', `${error.response.data.error}`);
     }
   }
@@ -34,7 +39,7 @@ export default function NewHelpOrder({ navigation }) {
             value={question}
             onChangeText={setQuestion}
           />
-          <NewHelpOrderButton onPress={handleSubmit}>
+          <NewHelpOrderButton loading={loading} onPress={handleSubmit}>
             Enviar pedido
           </NewHelpOrderButton>
         </Form>

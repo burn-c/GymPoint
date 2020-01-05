@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { Alert } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {} from 'react-navigation';
 import api from '~/services/api';
 import Background from '~/components/Background';
 import Header from '~/components/Header';

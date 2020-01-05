@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
+import { withNavigationFocus } from 'react-navigation';
 import api from '~/services/api';
 import Background from '~/components/Background';
 import Header from '~/components/Header';
@@ -8,7 +9,7 @@ import HelpOrderList from '~/components/HelpOrderList';
 
 import { Container, NewHelpOrder, List } from './styles';
 
-export default function HelpOrders({ navigation }) {
+function HelpOrders({ navigation, isFocused }) {
   const [helpOrders, setHelpOrders] = useState([]);
   const id = useSelector(state => state.auth.id);
 
@@ -22,14 +23,18 @@ export default function HelpOrders({ navigation }) {
   }
 
   useEffect(() => {
+    // CARREGA LISTAGEM DO HELP ORDERS
     async function loadHelpOrders() {
-      const response = await api.get(`students/8/help_orders`);
+      const response = await api.get(`students/${id}/help_orders`);
 
       response.data.sort(desc);
       setHelpOrders(response.data);
     }
-    loadHelpOrders();
-  }, [id]);
+    // ATUALIZA A PÁGINA SEMPRE QUE É ACESSADA
+    if (isFocused) {
+      loadHelpOrders();
+    }
+  }, [id, isFocused]);
 
   return (
     <Background>
@@ -49,3 +54,5 @@ export default function HelpOrders({ navigation }) {
     </Background>
   );
 }
+
+export default withNavigationFocus(HelpOrders);

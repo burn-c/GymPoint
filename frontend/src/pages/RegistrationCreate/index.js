@@ -157,12 +157,19 @@ export default function RegistrationCreate() {
 
             <li>
               <label>DATA DE TÉRMINO</label>
-              <Input name="endDate" type="text" value={endDate} readOnly />
+              <Input
+                className="InputEndDate"
+                name="endDate"
+                type="text"
+                value={endDate}
+                readOnly
+              />
             </li>
             <li>
               <label>VALOR FINAL</label>
               <Input
                 name="total"
+                className="InputTotal"
                 type="text"
                 value={`R$ ${priceTotal},00`}
                 readOnly

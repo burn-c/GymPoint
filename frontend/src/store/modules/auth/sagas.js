@@ -20,6 +20,7 @@ export function* signIn({ payload }) {
 
     if (!user.provider) {
       toast.error('Usuário não é prestador');
+      return;
     }
 
     api.defaults.headers.Authorization = `Bearer ${token}`;

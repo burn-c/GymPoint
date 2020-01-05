@@ -118,6 +118,7 @@ export default function PlanCreate() {
             <li>
               <label htmlFor="totalprice">PREÇO TOTAL</label>
               <Input
+                className="InputTotalPrice"
                 name="totalprice"
                 readOnly
                 value={`R$ ${!planTotal ? '0.00' : `${planTotal}.00`}`}

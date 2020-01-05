@@ -64,6 +64,10 @@ export const Container = styled.div`
     }
   }
 
+  .InputTotalPrice {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
   li input {
     width: 100%;
   }

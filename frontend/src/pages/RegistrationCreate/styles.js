@@ -68,11 +68,19 @@ export const Container = styled.div`
     padding: 0 15px;
     color: #000;
     font-size: 16px;
-    min-width: 170px;
+    width: 180px;
 
     &::placeholder {
       color: rgba(0, 0, 0, 1);
     }
+  }
+
+  .InputTotal {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .InputEndDate {
+    background: rgba(0, 0, 0, 0.1);
   }
 `;
 

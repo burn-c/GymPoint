@@ -5,7 +5,7 @@ export const Container = styled.SafeAreaView`
   flex: 1;
 `;
 
-export const NewButton = styled(Button)`
+export const NewHelpOrder = styled(Button)`
   margin: 0 30px 0 30px;
 `;
 

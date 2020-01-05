@@ -12,7 +12,7 @@ import {
   Question,
 } from './styles';
 
-export default function HelpOrderList({ data }) {
+export default function HelpOrderList({ data, navigation }) {
   const dateParsed = useMemo(() => {
     return formatRelative(parseISO(data.createdAt), new Date(), {
       locale: pt,
@@ -20,7 +20,9 @@ export default function HelpOrderList({ data }) {
   }, [data.createdAt]);
 
   return (
-    <Container>
+    <Container
+      onPress={() => navigation.navigate('Answer', { data, dateParsed })}
+    >
       <Top>
         <Status>
           <Icon

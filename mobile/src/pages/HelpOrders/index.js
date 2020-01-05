@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+// import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '~/services/api';
 import Background from '~/components/Background';
 import HelpOrderList from '~/components/HelpOrderList';
 
-import { Container, List } from './styles';
+import { Container, NewHelpOrder, List } from './styles';
 
-export default function HelpOrders() {
+export default function HelpOrders({ navigation }) {
   const [helpOrders, setHelpOrders] = useState([]);
   const id = useSelector(state => state.auth.id);
 
@@ -23,19 +23,19 @@ export default function HelpOrders() {
   return (
     <Background>
       <Container>
+        <NewHelpOrder onPress={() => navigation.navigate('NewHelpOrder')}>
+          Novo pedido de auxílio
+        </NewHelpOrder>
         <List
           data={helpOrders}
           keyExtractor={item => String(item.id)}
-          renderItem={({ item }) => <HelpOrderList data={item} />}
+          renderItem={({ item }) => (
+            <HelpOrderList data={item} navigation={navigation} />
+          )}
         />
       </Container>
     </Background>
   );
 }
 
-HelpOrders.navigationOptions = {
-  tabBarLabel: 'Pedir ajuda',
-  tabBarIcon: ({ tintColor }) => (
-    <Icon name="live-help" size={20} color={tintColor} />
-  ),
-};
+HelpOrders.navigationOptions = {};

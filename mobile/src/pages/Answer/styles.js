@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
 
-export const Container = styled(RectButton)`
+export const Container = styled.SafeAreaView`
   margin-bottom: 15px;
   padding: 15px;
   border-radius: 4px;
@@ -9,7 +8,10 @@ export const Container = styled(RectButton)`
 
   display: flex;
   flex-direction: column;
+  margin: 10px;
+  margin-top: 10px;
 `;
+
 export const Top = styled.View`
   display: flex;
   flex-direction: row;
@@ -18,18 +20,16 @@ export const Top = styled.View`
   margin-bottom: 10px;
 `;
 
-export const Status = styled.View`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-weight: bold;
+export const QuestionTitle = styled.Text`
   font-size: 14px;
+  color: #000;
+  font-weight: bold;
 `;
 
-export const StatusText = styled.Text`
-  font-size: 14px;
-  color: ${props => (props.colorAnswer ? '#3e3' : '#999')};
-  margin-left: 5px;
+export const Question = styled.Text`
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 10px;
 `;
 
 export const DateTime = styled.Text`
@@ -37,7 +37,15 @@ export const DateTime = styled.Text`
   color: #999;
 `;
 
-export const Question = styled.Text`
+export const AnswerTitle = styled.Text`
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 10px;
+`;
+
+export const AnswerText = styled.Text`
   font-size: 13px;
   color: #333;
+  margin-bottom: 10px;
 `;

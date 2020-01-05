@@ -4,9 +4,11 @@ import { useSelector } from 'react-redux';
 import { Alert } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+// import logo from '~/assets/logo.png';
 import {} from 'react-navigation';
 import api from '~/services/api';
 import Background from '~/components/Background';
+import Header from '~/components/Header';
 import CheckinList from '~/components/CheckinList';
 
 import { Container, NewButton, CheckinsList } from './styles';
@@ -56,6 +58,7 @@ export default function Checkins() {
 
   return (
     <Background>
+      <Header />
       <Container>
         <NewButton loading={loading} onPress={handleNewCheckin}>
           Novo Check-in
@@ -71,7 +74,7 @@ export default function Checkins() {
 }
 
 Checkins.navigationOptions = {
-  tabBarLabel: 'Agendamentos',
+  tabBarLabel: 'Check-ins',
   tabBarIcon: ({ tintColor }) => (
     <Icon name="edit-location" size={20} color={tintColor} />
   ),

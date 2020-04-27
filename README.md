@@ -30,13 +30,17 @@
   <a href="#instalação-e-executar">Instalação e executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#frontend--acesso-para-administradores-">Frontend</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#mobile--acesso-para-alunos-">Mobile</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
 <hr>
 
-## Backend
+<h1 align="center">
+  ⚙ Instalar e executar
+</h1>
 
-### Instalação e executar
+
+## 🎛 Backend
 
 1. Clonar repositório:
 
@@ -75,7 +79,7 @@ senha: 123456
 ```sh
 yarn start
 ```
-## Frontend ( Acesso para Administradores )
+## 🖥 Frontend ( Acesso para Administradores )
 
 1. Instalar as dependências utilizando o comando:
 
@@ -92,7 +96,7 @@ yarn start
 ```
 3. Com os dados de ADMIN agora você tem acesso a aplicação Web para administrar os alunos, planos, matrícula e pedidos de auxílio.
 
-## Mobile ( Acesso para alunos )
+## 📱 Mobile ( Acesso para alunos )
 
 1. Instalar as dependências utilizando o comando:
 
@@ -116,6 +120,33 @@ react-native start
 ```
 
 3. Com ID do aluno você consegue logar no app e fazer check-ins e enviar pedidos de auxílio.
+
+## 🛠 Tecnologias
+
+O projeto foi desenvolvido com as seguintes tecnologias:
+
+-  [Node.js](https://nodejs.org/)
+-  [ReactJS](https://reactjs.org/)
+-  [React Native](https://facebook.github.io/react-native/)
+-  [Redux](https://redux.js.org/)
+-  [Redux-Saga](https://redux-saga.js.org/)
+-  [Redux-persist](https://github.com/rt2zz/redux-persist)
+-  [@rocketseat/unform](https://github.com/Rocketseat/unform)
+-  [Styled-components](https://www.styled-components.com/)
+-  [React-toastify](https://github.com/fkhadra/react-toastify)
+-  [React Navigation](https://reactnavigation.org/)
+-  [React-icons](https://react-icons.netlify.com/)
+-  [Axios](https://github.com/axios/axios)
+-  [Reactotron](https://infinite.red/reactotron)
+-  [Immer](https://github.com/immerjs/immer)
+-  [Polished](https://polished.js.org/)
+-  [Yup](https://www.npmjs.com/package/yup)
+-  [Bee-queue](https://github.com/bee-queue/bee-queue)
+-  [Date-fns](https://date-fns.org/)
+-  [Prop-types](https://www.npmjs.com/package/prop-types)
+-  [ESLint](https://eslint.org/)
+-  [Prettier](https://prettier.io/)
+-  [VS Code](https://code.visualstudio.com/)
 
 ---
 

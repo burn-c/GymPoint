@@ -112,4 +112,4 @@ react-native start
 
 Encontrou algum erro ? Tem alguma dica ? Enviei uma pull request! Ficarei feliz em receber! 😁
 
-Made with 🔥 by Carlos ( BurN  ) 
+Made with 🔥 by Carlos Oliveira ( BurN  ) 

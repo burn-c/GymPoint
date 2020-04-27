@@ -2,6 +2,15 @@
   <img alt="GymPoint" title="GymPoint" src="./frontend/src/assets/logo.png" width="200px" />
 </h1>
 
+<h3 align="center">
+  Aplicação de adminitração de academia!
+</h3>
+<h5 align="center">
+  Feito com ReactJS | React Native | Node.js
+</h5>
+
+
+
 
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/burn-c/goeat-api?color=red">
@@ -112,4 +121,4 @@ react-native start
 
 Encontrou algum erro ? Tem alguma dica ? Enviei uma pull request! Ficarei feliz em receber! 😁
 
-Made with 🔥 by Carlos Oliveira ( BurN  ) 
+Made with 🔥 by Carlos Oliveira ( BurN  ) - [My linkedin!](https://www.linkedin.com/in/carlosoliveiradev/)

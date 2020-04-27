@@ -2,7 +2,6 @@
   <img alt="GymPoint" title="GymPoint" src="./frontend/src/assets/logo.png" width="200px" />
 </h1>
 
----
 
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/burn-c/goeat-api?color=red">

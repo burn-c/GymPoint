@@ -1,5 +1,30 @@
-# GymPoint
-Projeto de conclusão do curso GoStack 9 
+<h1 align="center">
+  <img alt="GymPoint" title="GymPoint" src="./frontend/src/assets/logo.png" width="200px" />
+</h1>
+
+---
+
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/burn-c/goeat-api?color=red">
+
+  <img alt="License" src="https://img.shields.io/badge/licence-MIT-red">
+  
+   <a href="https://www.linkedin.com/in/carlosoliveiradev/">
+    <img alt="Made by Carlos Oliveira" src="https://img.shields.io/badge/made%20by-carlos%20oliveira-red">
+  </a>
+
+  <a href="https://github.com/burn-c/goeat-api/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/burn-c/goeat-api?style=social">
+  </a>
+</p>
+
+<p align="center">
+  <a href="#instalação-e-executar">Instalação e executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#frontend--acesso-para-administradores-">Frontend</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#mobile--acesso-para-alunos-">Mobile</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+</p>
+
+<hr>
 
 ## Backend
 
@@ -83,3 +108,9 @@ react-native start
 ```
 
 3. Com ID do aluno você consegue logar no app e fazer check-ins e enviar pedidos de auxílio.
+
+---
+
+Encontrou algum erro ? Tem alguma dica ? Enviei uma pull request! Ficarei feliz em receber! 😁
+
+Made with 🔥 by Carlos ( BurN  ) 

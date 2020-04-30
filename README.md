@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-  Aplicação de adminitração de academia!
+Aplicação de administração de academia!
 </h3>
 <h5 align="center">
   Feito com ReactJS | React Native | Node.js

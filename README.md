@@ -22,7 +22,7 @@
   </a>
 
   <a href="https://github.com/burn-c/goeat-api/stargazers">
-    <img alt="Stargazers" src="https://img.shields.io/github/stars/burn-c/goeat-api?style=social">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/burn-c/GymPoint?style=social">
   </a>
 </p>
 
